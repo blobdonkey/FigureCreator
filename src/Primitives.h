@@ -17,9 +17,10 @@
 
 class Point : public Figure{
 public:
-	Point(const int weight, const int style):Figure(weight*2-1, weight*2-1){
+	Point(const int weight, const int alpha, const int style):Figure(weight*2-1, weight*2-1){
 
 			pWeight = weight;
+			pAlpha = alpha;
 			pStyle = style;
 
 			drawPoint();
@@ -30,6 +31,7 @@ public:
 	~Point(){}
 private:
 	int pWeight;
+	int pAlpha;
 	int pStyle;
 
 	void drawPoint(void);

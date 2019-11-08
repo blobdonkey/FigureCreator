@@ -10,7 +10,7 @@ void Point::drawPoint(void){
 			{
 				if((x > ((width/2) - pWeight)) && (x < ((width/2) + pWeight)) && ((height/2) > ((height/2) - pWeight)) && (y < ((height/2) + pWeight)))
 				{
-					image.at((width*y)+x) = 255;
+					image.at((width*y)+x) = pAlpha;
 				}
 			}
 		}
@@ -22,7 +22,7 @@ void Point::drawPoint(void){
 		{
 			for(int x=0; x<width; x++)
 			{
-				if(sqrt(pow(x-width/2,2)+pow(y-height/2,2))<pWeight) image.at((width*y)+x) = 255;
+				if(sqrt(pow(x-width/2,2)+pow(y-height/2,2))<pWeight) image.at((width*y)+x) = pAlpha;
 			}
 		}
 	}
@@ -34,8 +34,7 @@ void Point::DrawFigure(std::vector<unsigned char> & image_vector){
 	{
 		for(int x = 0; x < width; x++)
 		{
-			if(getPixel(x,y)!=0) image_vector.at(y * width + x) = 255;
-			else image_vector.at(y * width + x) = 0;
+			image_vector.at(y * width + x) = getPixel(x,y);
 		}
 	}
 }

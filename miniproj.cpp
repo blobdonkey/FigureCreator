@@ -12,10 +12,10 @@ int main(int argc, char **argv) {
 
   Drawing sketch1(width, height);
 
-  Figure * point1 = new Point(1000, P_ROUND);
-  Figure * point2 = new Point(20, P_ROUND);
-  Figure * point3 = new Point(30, P_ROUND);
-  Figure * point4 = new Point(40, P_ROUND);
+  Figure * point1 = new Point(200,128,P_ROUND);
+  Figure * point2 = new Point(20,255,P_ROUND);
+  Figure * point3 = new Point(30,255,P_ROUND);
+  Figure * point4 = new Point(40,255,P_ROUND);
 
   /*
   point1->DrawFigure(image);
