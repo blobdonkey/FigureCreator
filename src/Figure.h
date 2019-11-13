@@ -8,7 +8,7 @@
 
 class Figure {
 public:
-	Figure(const int width, const int height, const Color color) : width(width), height(height), color(color){
+	Figure(const int width, const int height, const Color & color) : width(width), height(height), color(color){
 		image.resize(width * height * 3);
 		ClearVector();
 	}

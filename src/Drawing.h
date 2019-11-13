@@ -21,6 +21,7 @@ public:
 
   void save(std::string filename);
   void AddFigure(Figure * figure, const int x_pos, const int y_pos);
+  void clearFigures(void);
 
   std::vector<Figure*>vecteur_figures;
   std::vector<TypeDef_Coord*>vecteur_coord;

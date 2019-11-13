@@ -9,9 +9,18 @@ bool drawPixel(const int width,
 
 	if((x>=0)&&(x<width)&&(y>=0)&&(y<width))
 	{
-		image.at(y * width * 3 + x * 3) = color.r;
-		image.at(y * width * 3 + x * 3 + 1) = color.g;
-		image.at(y * width * 3 + x * 3 + 2) = color.b;
+    if((image.at(y * width * 3 + x * 3) + color.r)<255)
+		  image.at(y * width * 3 + x * 3) += color.r;
+    else image.at(y * width * 3 + x * 3) = 255;
+
+    if((image.at(y * width * 3 + x * 3 + 1) + color.g)<255)
+		  image.at(y * width * 3 + x * 3 + 1) += color.g;
+    else image.at(y * width * 3 + x * 3 + 1) = 255;
+
+    if((image.at(y * width * 3 + x * 3 + 2) + color.b)<255)
+		  image.at(y * width * 3 + x * 3 + 2) += color.b;
+    else image.at(y * width * 3 + x * 3 + 2) = 255;
+
 		return true;
 	}
 	else return false;
@@ -27,8 +36,8 @@ void getPixel(
 
 	if((x>=0)&&(x<width)&&(y>=0)&&(y<width))
 	{
-		 image.at(y * width * 3 + x) = color_ref.r;
-		 image.at(y * width * 3 + x + 1) = color_ref.g;
-		 image.at(y * width * 3 + x + 2) = color_ref.b;
+		 color_ref.r = image.at(y * width * 3 + x * 3);
+		 color_ref.g = image.at(y * width * 3 + x * 3 + 1);
+		 color_ref.b = image.at(y * width * 3 + x * 3 + 2);
 	}
 }

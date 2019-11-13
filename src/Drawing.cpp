@@ -21,34 +21,32 @@ Drawing::~Drawing() {}
 /* Save image to file "filename" */
 void Drawing::save(std::string filename) {
 
+  std::vector<unsigned char> figure_image;
   int figWidth = 0;
   int figHeight = 0;
   int figX = 0;
   int figY = 0;
-
-  Color color(255,255,255,64);
+  Color figure_color(0,0,0,0);
 
   if (filename.substr(filename.find_last_of(".") + 1) != "bmp") {
     throw std::runtime_error(
         "Drawing ne supporte que l'enregistrement d'images au format bmp");
   }
 
-  std::vector<unsigned char> figure_image;
-
   for(int i = 0; i < vecteur_figures.size(); i++)
   {
     figure_image = vecteur_figures.at(i)->Get();
-    figWidth = vecteur_figures.at(i)->width*3;
+    figWidth = vecteur_figures.at(i)->width;
     figHeight = vecteur_figures.at(i)->height;
     figX = vecteur_coord.at(i)->x;
     figY = vecteur_coord.at(i)->y;
 
-    for(int y = 0; y < height; y++)
+    for(int y = figY; y < figY+figHeight; y++)
     {
-      for(int x = 0; x < height; x++)
+      for(int x = figX; x < figX+figWidth; x++)
       {
-        drawPixel(width,height,x,y,color,image);
-        //getPixel(width,height,x,y,)
+        getPixel(figWidth,figHeight,x-figX,y-figY,figure_color,figure_image);
+        drawPixel(width,height,x,y,figure_color,image);
       }
     }
   }
@@ -90,4 +88,10 @@ void Drawing::AddFigure(Figure * figure, const int x_pos, const int y_pos) {
 
   vecteur_figures.push_back(figure);
   vecteur_coord.push_back(coord);
+}
+
+void Drawing::clearFigures(void)
+{
+  vecteur_figures.clear();
+  vecteur_coord.clear();
 }
