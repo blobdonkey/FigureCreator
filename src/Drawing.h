@@ -5,8 +5,9 @@
 #include <vector>
 
 //User Functions
-#include <Primitives.h>
+#include <Utility.h>
 #include <Figure.h>
+#include <Colors.h>
 
 typedef struct{
   int x;
@@ -32,9 +33,6 @@ private:
   const int height;
 
   std::vector<unsigned char> image;
-
-  //Figures et leur coordonnées
-
 };
 
 #endif /* DRAWIN_H */

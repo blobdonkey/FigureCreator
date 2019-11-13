@@ -1,4 +1,4 @@
-#include "Drawing.h"
+#include <Drawing.h>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
@@ -11,8 +11,9 @@
 // |_|
 
 Drawing::Drawing(const int width, const int height) : width(width), height(height) {
-  image.resize(width * height);
-  createTestImage();
+  image.resize(width * height * 3);
+  clearImage();
+  //createTestImage();
 }
 
 Drawing::~Drawing() {}
@@ -25,46 +26,33 @@ void Drawing::save(std::string filename) {
   int figX = 0;
   int figY = 0;
 
+  Color color(255,255,255,64);
+
   if (filename.substr(filename.find_last_of(".") + 1) != "bmp") {
     throw std::runtime_error(
         "Drawing ne supporte que l'enregistrement d'images au format bmp");
   }
-
-  //createTestImage();
 
   std::vector<unsigned char> figure_image;
 
   for(int i = 0; i < vecteur_figures.size(); i++)
   {
     figure_image = vecteur_figures.at(i)->Get();
-    figWidth = vecteur_figures.at(i)->width;
+    figWidth = vecteur_figures.at(i)->width*3;
     figHeight = vecteur_figures.at(i)->height;
     figX = vecteur_coord.at(i)->x;
     figY = vecteur_coord.at(i)->y;
 
-    //std::cout<<"figure"<<i<<" : ("<<figX<<","<<figY<<") w : "<<figWidth<<" h : "<<figHeight<<std::endl;
-
-    for(int y = figY; y < (figHeight+figY); y++)
+    for(int y = 0; y < height; y++)
     {
-      for(int x = figX; x < (figWidth+figX); x++)
+      for(int x = 0; x < height; x++)
       {
-        if((y < height) && (x < width))
-        {
-          //std::cout<<"("<<x<<","<<y<<") <-> ("<<x-figX<<","<<y-figY<<")"<<std::endl;
-          if(image.at(y * width + x) + figure_image.at((y-figY)*figWidth + (x-figX)) > 255)
-          {
-            image.at(y * width + x) = 255;
-          }
-          else
-          {
-            image.at(y * width + x) += figure_image.at((y-figY)*figWidth + (x-figX));
-          }
-        }
+        drawPixel(width,height,x,y,color,image);
+        //getPixel(width,height,x,y,)
       }
     }
   }
-
-  stbi_write_bmp(filename.c_str(), width, height, 1, image.data());
+  stbi_write_bmp(filename.c_str(), width, height, 3, image.data());
 }
 
 //            _             _                      _    _           _

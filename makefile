@@ -4,11 +4,10 @@ CFLAGS = -std=c++11 -g -I$(STB_INCLUDE_PATH) -Isrc
 LDFLAGS =
 
 APP = FigureCreator
-OBJ = miniproj.o Figure.o Primitives.o Drawing.o
-
+OBJ = miniproj.o Utility.o Colors.o Figure.o Primitives.o Drawing.o
 
 $(APP): $(OBJ)
-	g++ $(CFLAGS) -o $(APP) $(OBJ) $(LDFLAGS) -Wall
+	g++ $(CFLAGS) -o $(APP) $(OBJ) $(LDFLAGS)
 	rm *.o
 
 miniproj.o: miniproj.cpp
@@ -24,6 +23,12 @@ Figure.o: src/Figure.cpp
 #Inclusion de Figure
 Primitives.o: src/Primitives.cpp
 	g++ $(CFLAGS) -c src/Primitives.cpp $(LDFLAGS)
+
+Colors.o: src/Colors.cpp
+	g++ $(CFLAGS) -c src/Colors.cpp $(LDFLAGS)
+
+Utility.o: src/Utility.cpp
+	g++ $(CFLAGS) -c src/Utility.cpp $(LDFLAGS)
 
 .PHONY: test clean
 

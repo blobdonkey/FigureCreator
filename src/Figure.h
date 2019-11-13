@@ -1,16 +1,15 @@
-
 #ifndef FIGURE_H
 #define FIGURE_H
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include <math.h>
+#include <Colors.h>
 
 class Figure {
 public:
-	Figure(const int width, const int height) : width(width), height(height) {
-		image.resize(width * height);
+	Figure(const int width, const int height, const Color color) : width(width), height(height), color(color){
+		image.resize(width * height * 3);
 		ClearVector();
 	}
 
@@ -20,30 +19,11 @@ public:
 	virtual void DrawFigure(std::vector<unsigned char> & image_vector) = 0;
 	//Renvoie le vecteur d'image (non modifiable)
 	const std::vector<unsigned char> Get(void) const;
-	//*DEBUG* Affiche la figure dans le terminal
-	void printfFigure(void){
-
-		for(int y = 0; y < height; y++)
-		{
-			for(int x = 0; x < width; x++)
-			{
-				if(image.at(y * height + x))
-				{
-					std::cout<<"■ ";
-				}
-				else
-				{
-					std::cout<<"  ";
-				}
-			}
-			std::cout<<std::endl;
-		}
-	}
 
 	//Attributs de taille
 	int width;
 	int height;
-
+	Color color;
 protected:
 	//Vecteur d'image
 	std::vector<unsigned char> image;
@@ -54,11 +34,6 @@ protected:
 	    image.at(counter) = 0;
 		}
 	}
-
-	//Frappe un pixel au coordonnées x,y. Renvoie 'true' si possible, sinon 'false'
-	bool drawPixel(const int x, const int y);
-	//Renvoie la valeur du pixel aux coordonnées x,y
-	unsigned char getPixel(const int x, const int y);
 };
 
 #endif /* FIGURE_H */
