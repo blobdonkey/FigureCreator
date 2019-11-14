@@ -17,10 +17,10 @@ int main(int argc, char **argv) {
 
   Drawing sketch1(width, height);
 
-  Color color1(255,0,0,128);
-  Color color2(0,255,0,128);
-  Color color3(0,0,255,128);
-  Color color4(255,255,255,128);
+  Color color1(255,0,0,255);
+  Color color2(0,255,0,255);
+  Color color3(0,0,255,255);
+  Color color4(255,255,255,255);
 
   Figure * point1 = new Point(100,color1,P_ROUND);
   Figure * point2 = new Point(100,color2,P_ROUND);
