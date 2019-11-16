@@ -41,7 +41,7 @@ void Menu::Run(void){
 		switch(choix)
 		{
 			case NEW_FIG:
-				figure = InsertFigure();
+				figure = InsertFigure();//Récupère le pointeur de la figure entrée par l'utilisateur
 
 				do{
 					std::cout<<"Position X : ";
@@ -55,17 +55,17 @@ void Menu::Run(void){
 					Y = atoi(buffer);
 				}while((Y<0)||(Y>height));
 
-				sketch.AddFigure(figure,X,Y);
+				sketch.AddFigure(figure,X,Y);//Ajoute au drawing la figure entrée par l'utilisateur
 
 			break;
 
 			case SAVE_SKETCH:
-				sketch.save(std::string("test_image.bmp"));
+				sketch.save(std::string("test_image.bmp"));//Sauvegarde le drawing en image
 			break;
 
 			case EXIT_MENU:
 				system("clear");
-				exit(0);
+				exit(0);//Quitte le programme
 			break;
 
 			default:
@@ -101,26 +101,27 @@ Figure * Menu::InsertFigure(void){
 	{
 		case FIG_POINT:
 			figure = AddPoint();
-			return figure;
+			return figure;//Renvoie un pointeur de figure de type point
 		break;
 
 		case FIG_CROSS:
 			figure = AddCross();
-			return figure;
+			return figure;//Renvoie un pointeur de figure de type croix
 		break;
 
 		case FIG_RECTANGLE:
 			figure = AddRectangle();
+			return figure;//Renvoie un pointeur de figure de type rectangle
 		break;
 
 		case FIG_SQUARE:
 			figure = AddSquare();
-			return figure;
+			return figure;//Renvoie un pointeur de figure de type carré
 		break;
 
 		case FIG_SEGMENT:
 			figure = AddSegment();
-			return figure;
+			return figure;//Renvoie un pointeur de figure de type segment
 		break;
 	}
 }

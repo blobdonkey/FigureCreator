@@ -55,13 +55,13 @@ protected:
 	int width;
 	int height;
 
-	void PrintMenu(void);
-	Figure * InsertFigure(void);
-	Figure * AddPoint(void);
-	Figure * AddCross(void);
-	Figure * AddRectangle(void);
-	Figure * AddSquare(void);
-	Figure * AddSegment(void);
+	void PrintMenu(void);//Affiche le menu principal
+	Figure * InsertFigure(void);//Renvoie un pointeur d'objet de type Figure
+	Figure * AddPoint(void);//Renvoie un pointeur d'objet de type Figure point
+	Figure * AddCross(void);//Renvoie un pointeur d'objet de type Figure vroix
+	Figure * AddRectangle(void);//Renvoie un pointeur d'objet de type Figure rectangle
+	Figure * AddSquare(void);//Renvoie un pointeur d'objet de type Figure carré
+	Figure * AddSegment(void);//Renvoie un pointeur d'objet de type Figure segment
 };
 
 #endif
