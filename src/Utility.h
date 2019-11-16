@@ -10,7 +10,7 @@ bool drawPixel(
   const int height,
   const int x,
   const int y,
-  const Color color,
+  const TypeDef_Color color,
   std::vector<unsigned char>&image);
 
 void getPixel(
@@ -18,7 +18,7 @@ void getPixel(
   const int height,
   const int x,
   const int y,
-  Color & color_ref,
+  TypeDef_Color & color_ref,
   std::vector<unsigned char>&image);
 
 #endif /* FIGURE_H */

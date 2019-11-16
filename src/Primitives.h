@@ -18,7 +18,7 @@
 
 class Point : public Figure{
 public:
-	Point(const int weight, const Color color, const int style):Figure(weight*2-1, weight*2-1, color){
+	Point(const int weight, const TypeDef_Color color, const int style):Figure(weight*2-1, weight*2-1, color){
 
 			pWeight = weight;
 			pStyle = style;

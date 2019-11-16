@@ -3,6 +3,13 @@
 
 #include <iostream>
 
+typedef struct
+{
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+}TypeDef_Color;
+/*
 class Color{
 public:
 	Color(const int R, const int G, const int B, const int alpha)
@@ -26,5 +33,5 @@ public:
 	int g;
 	int b;
 };
-
+*/
 #endif

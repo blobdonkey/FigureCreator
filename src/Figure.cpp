@@ -4,5 +4,5 @@
 
 const std::vector<unsigned char> Figure::Get(void) const
 {
-	return image;
+	return image_figure;
 }

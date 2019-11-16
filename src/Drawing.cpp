@@ -3,6 +3,9 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
 #include <stdexcept>
+#include <unistd.h>
+
+#include <Colors.h>
 
 //            _    _  _                     _    _           _
 //  ___  _ _ | |_ | |<_> ___  ._ _ _  ___ _| |_ | |_  ___  _| | ___
@@ -10,7 +13,7 @@
 // |  _/`___||___/|_||_|\_|_. |_|_|_|\___. |_|  |_|_|\___/\___|/__/
 // |_|
 
-Drawing::Drawing(const int width, const int height) : width(width), height(height) {
+Drawing::Drawing(const int Width, const int Height) : width(Width), height(Height) {
   image.resize(width * height * 3);
   clearImage();
   //createTestImage();
@@ -22,11 +25,9 @@ Drawing::~Drawing() {}
 void Drawing::save(std::string filename) {
 
   std::vector<unsigned char> figure_image;
-  int figWidth = 0;
-  int figHeight = 0;
-  int figX = 0;
-  int figY = 0;
-  Color figure_color(0,0,0,0);
+  int figWidth,figHeight = 0;
+  int figX,figY = 0;
+  TypeDef_Color figure_color;
 
   if (filename.substr(filename.find_last_of(".") + 1) != "bmp") {
     throw std::runtime_error(
@@ -41,12 +42,12 @@ void Drawing::save(std::string filename) {
     figX = vecteur_coord.at(i)->x;
     figY = vecteur_coord.at(i)->y;
 
-    for(int y = figY; y < figY+figHeight; y++)
+    for(int y = 0; y < figHeight; y++)
     {
-      for(int x = figX; x < figX+figWidth; x++)
+      for(int x = 0; x < figWidth; x++)
       {
-        getPixel(figWidth,figHeight,x-figX,y-figY,figure_color,figure_image);
-        drawPixel(width,height,x,y,figure_color,image);
+        getPixel(figWidth,figHeight,x,y,figure_color,figure_image);
+        drawPixel(width,height,x+figX,y+figY,figure_color,image);
       }
     }
   }
