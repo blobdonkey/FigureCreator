@@ -2,7 +2,7 @@
 
 void Point::drawPoint(void){
 
-	if(pStyle == P_SQUARE)
+	if(pStyle == P_SQUARE)//Dessine un point carré
 	{
 		for(int y=0; y<height; y++)
 		{
@@ -16,7 +16,7 @@ void Point::drawPoint(void){
 		}
 	}
 	else
-	if(pStyle == P_ROUND)
+	if(pStyle == P_ROUND)//Dessine un point Rond
 	{
 		for(int y=0; y<height; y++)
 		{
@@ -39,9 +39,7 @@ void Point::DrawFigure(std::vector<unsigned char> & image_vector){
 		for(int x = 0; x < width; x++)
 		{
 			getPixel(width,height,x,y,color,image_figure);
-			image_vector.at(y * width * 3 + x) = color.r;
-			image_vector.at(y * width * 3 + x) = color.g;
-			image_vector.at(y * width * 3 + x) = color.b;
+			drawPixel(width,height,x,y,color,image_vector);
 		}
 	}
 }

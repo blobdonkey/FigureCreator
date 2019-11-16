@@ -2,9 +2,9 @@
 
 void Rectangle::drawRectangle(void){
 
-	for(int x=0; x<width; x++)
+	for(int x=0; x<width; x++)//Balaye les x
 	{
-		for(int i=0; i<Weight; i++)
+		for(int i=0; i<Weight; i++)//Balaye la largeur du trait
 		{
 			drawPixel(width,height,x,i,color,image_figure);
 			drawPixel(width,height,x,height-1-i,color,image_figure);
